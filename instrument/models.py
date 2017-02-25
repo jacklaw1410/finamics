@@ -4,6 +4,9 @@ class Instrument(models.Model):
     ticker = models.CharField(max_length=20, primary_key=True)
     name = models.CharField(max_length=100)
 
+    class Meta:
+        ordering = ['ticker']
+
 class OHLC(models.Model):
     date = models.DateField()
     open = models.FloatField()

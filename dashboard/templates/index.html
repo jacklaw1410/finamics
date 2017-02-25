@@ -21,10 +21,14 @@
 </nav>
 
 <div class="container">
-  {% for stock in stocks %}
-  <div id="{{stock.ticker}}" class="jumbotron tab-pane {% if forloop.first %}active{% endif %}">
-    <h3>{{stock.name}} <span class="small">({{stock.ticker}})</span></h3>
-  </div>
-  {% endfor %}
+  <div class="tab-content">
+    {% for stock in stocks %}
+    <div id="{{stock.ticker}}" class="tab-pane {% if forloop.first %}active{% endif %}">
+      <div class="jumbotron">
+        <h3>{{stock.name}} <span class="small">({{stock.ticker}})</span></h3>
+      </div>
+    </div>
+    {% endfor %}
+  <div>
 <div>
 {% endblock content %}
