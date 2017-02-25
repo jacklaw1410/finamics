@@ -1,0 +1,27 @@
+{
+  "name": "finamics",
+  "description": "A web application to let user dive into the dynamics of financial markets.",
+  "scripts": {
+  },
+  "env": {
+    "DISABLE_COLLECTSTATIC": {
+      "required": true
+    },
+    "ENVIROMENT": {
+      "required": true
+    },
+    "SECRET_KEY": {
+      "required": true
+    }
+  },
+  "formation": {
+  },
+  "addons": [
+    "heroku-postgresql"
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/python"
+    }
+  ]
+}
