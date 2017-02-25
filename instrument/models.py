@@ -1,10 +1,10 @@
 from django.db import models
 
-class Instrument(models.Models):
+class Instrument(models.Model):
     ticker = models.CharField(max_length=20, primary_key=True)
     name = models.CharField(max_length=100)
 
-class OHLC(models.Models):
+class OHLC(models.Model):
     date = models.DateField()
     open = models.FloatField()
     high = models.FloatField()
@@ -17,13 +17,13 @@ class OHLC(models.Models):
         abstract = True
         default_related_name='ohlc'
 
-class Industry(models.Models):
+class Industry(models.Model):
     code = models.CharField(max_length=20, primary_key=True)
     name = models.CharField(max_length=100)
     description = models.TextField(null=True)
 
 class Stock(Instrument):
-    insustry = models.ForeignKey(Industry, on_delete=models.SET_NULL, related_name='stocks')
+    insustry = models.ForeignKey(Industry, null=True, on_delete=models.SET_NULL, related_name='stocks')
     description = models.TextField(null=True)
 
 class StockOHLC(OHLC):

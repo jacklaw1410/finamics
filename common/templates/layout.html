@@ -1,0 +1,55 @@
+{% spaceless %}
+<!DOCTYPE html>
+<html lang="{{LANGUAGE_CODE}}" style="height:100%;">
+  <head>
+    <meta charset="utf-8">
+    {% comment %}<link rel="shortcut icon" href="{%  static 'common/img/favicon.ico' %}">{% endcomment %}
+    <title>{% block title %}Finamics{% endblock %}</title>
+    <!--============================================================ Metadata ============================================================-->
+    <meta property="og:type"                content="website">
+    <meta property="og:site_name"           content="finamics">
+    <meta property="og:locale"              content="en_US">
+    <meta property="og:locale:alternate"    content="zh_HK">
+    <meta property="og:rich_attachment"     content="true">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <!--============================================================ Stylesheet ============================================================-->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    {% block critical_dependencies %}{% endblock critical_dependencies %}
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window, document,'script','https://www.google-analytics.com/analytics.js','ga');
+        ga('create', '', 'auto');
+        ga('send', 'pageview');
+    </script>
+  </head>
+  <body class="boxed-layout">
+    {% block content %}{% endblock %}
+
+    {% block dependencies %}{% endblock dependencies %}
+
+    <noscript id="deferred-styles">
+      {% block deferred-styles %}
+      <link type="text/css" href='//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css' rel="stylesheet">
+      <link type="text/css" href='//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css' rel="stylesheet">
+      {% endblock deferred-styles %}
+    </noscript>
+    <script>
+      var loadDeferredStyles = function() {
+          var addStylesNode = document.getElementById("deferred-styles");
+          var replacement = document.createElement("div");
+          replacement.innerHTML = addStylesNode.textContent;
+          document.body.appendChild(replacement);
+      };
+      var raf = requestAnimationFrame || mozRequestAnimationFrame || webkitRequestAnimationFrame || msRequestAnimationFrame;
+      if (raf) raf(function() { window.setTimeout(loadDeferredStyles, 0); });
+      else window.addEventListener('load', loadDeferredStyles);
+    </script>
+  </body>
+</html>
+{% endspaceless %}
