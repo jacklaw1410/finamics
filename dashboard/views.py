@@ -4,4 +4,7 @@ from django.shortcuts import render
 from instrument.models import Stock
 
 def index(request):
-    return render(request, 'index.html')
+    context = {
+        'stocks': Stock.objects.all(),
+    }
+    return render(request, 'index.html', context)
