@@ -1,0 +1,38 @@
+.*
+
+venv
+**/__pycahce__
+**/node_modules
+**/log
+test/reports
+test/screenshots
+test/error-screenshots
+setenv.cmd
+static
+
+*.py[co]
+
+# ./manage.py collectstatic folder
+static-collected/*
+
+
+# Packages
+*.egg
+*.egg-info
+dist
+build
+eggs
+parts
+bin
+var
+sdist
+develop-eggs
+.installed.cfg
+
+# Installer logs
+pip-log.txt
+npm-debug.log
+
+# Unit test / coverage reports
+.coverage
+.tox
