@@ -1,5 +1,20 @@
 {% extends "layout.html" %}
 
+{% block critical_dependencies %}
+{{block.super}}
+<link href="{% static 'dashboard/css/dashboard.css' %}" rel="stylesheet">
+{% endblock critical_dependencies %}
+
+{% block dependencies %}
+{{block.super}}
+<script defer src="{% static 'dashboard/js/dashboard.js' %}"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    new Dashboard('price-dashboard', ['price-chart'], '{{tickers}}').plot();
+  });
+</script>
+{% endblock dependencies %}
+
 {% block content %}
 <nav class="navbar navbar-default navbar-top">
   <div class="container">
@@ -21,14 +36,26 @@
 </nav>
 
 <div class="container">
-  <div class="tab-content">
-    {% for stock in stocks %}
-    <div id="{{stock.ticker}}" class="tab-pane {% if forloop.first %}active{% endif %}">
-      <div class="jumbotron">
-        <h3>{{stock.name}} <span class="small">({{stock.ticker}})</span></h3>
+  <div class="col-md-4">
+    <div class="tab-content">
+      {% for stock in stocks %}
+      <div id="{{stock.ticker}}" class="tab-pane {% if forloop.first %}active{% endif %}">
+        <div class="jumbotron">
+          <h3>{{stock.name}} <span class="small">({{stock.ticker}})</span></h3>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="col-md-8">
+    <div class="jumbotron dashboard-container" dashboard="price-dashboard">
+      <div class="dashboard-chart"  id="price-chart"></div>
+
+      <div class="dashboard-loading">
+        <i class="fa fa-spinner fa-pulse fa-fw"></i>
+        <span class="sr-only">Loading...</span>
       </div>
     </div>
-    {% endfor %}
-  <div>
-<div>
+  </div>
+</div>
 {% endblock content %}

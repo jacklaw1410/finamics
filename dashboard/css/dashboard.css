@@ -1,0 +1,8 @@
+.dashboard-container {
+  height: 75vh;
+  text-align: center;
+}
+
+.dashboard-loading > i.fa-spinner {
+  font-size: 160px;
+}
