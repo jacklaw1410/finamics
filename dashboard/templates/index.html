@@ -27,7 +27,7 @@
       <ul class="nav navbar-nav">
         {% for stock in stocks %}
         <li {% if forloop.first %}class="active"{% endif %}>
-          <a href="[id='{{stock.ticker}}'].tab-pane" data-toggle="tab">{{stock.name}}</a>
+          <a href="[id='{{stock.ticker}}'].tab-pane" data-toggle="tab" data-ticker="{{stock.ticker}}">{{stock.name}}</a>
         </li>
         {% endfor %}
       </ul>
