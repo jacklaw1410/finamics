@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "description": "An web application to visualize the dynamics of global financial markets",
   "main": "gulpfile.js",
-  "__dependencies": {
+  "dependencies": {
     "angular-sanitize": "^1.5.8",
     "angularjs": "0.0.1",
     "animate.css-js": "0.0.9",
@@ -70,7 +70,7 @@
   "scripts": {
     "start": "python env.py & setenv & python manage.py runserver 8080",
     "test": "node_modules/.bin/nightwatch",
-    "postinstall": "npm install & ./node_modules/.bin/gulp production",
+    "postinstall": "./node_modules/.bin/gulp production",
     "shell": "python env.py & setenv & python manage.py shell"
   },
   "babel": {
