@@ -12,7 +12,6 @@ var jsonmin = require('gulp-jsonmin');
 var gutil = require('gulp-util');
 var sourcemaps = require('gulp-sourcemaps');
 var requireDir = require('require-dir');
-var runSequence = require('run-sequence');
 var browserSync = require('browser-sync').create();
 var reload = browserSync.reload;
 var postcss = require('gulp-postcss');
