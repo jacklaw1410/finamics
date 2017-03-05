@@ -70,7 +70,7 @@
   "scripts": {
     "start": "python env.py & setenv & python manage.py runserver 8080",
     "test": "node_modules/.bin/nightwatch",
-    "postinstall": "./node_modules/.bin/gulp production",
+    "postinstall": "npm install & ./node_modules/.bin/gulp production",
     "shell": "python env.py & setenv & python manage.py shell"
   },
   "babel": {
