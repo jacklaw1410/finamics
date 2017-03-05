@@ -21,7 +21,7 @@ def get_stock_ohlc(request):
         tickers = tickers.split(',')
 
     queryset = StockOHLC.objects.filter(stock_id__in=tickers)
-    values = list(queryset.values('date', 'open', 'high', 'low', 'close', 'adj_close', 'volume'))
+    values = list(queryset.values('stock_id', 'date', 'open', 'high', 'low', 'close', 'adj_close', 'volume'))
 
     json_dump = json.dumps(values, cls=DateTimeEncoder)
     # json_dump = serializers.serialize('json', queryset)
