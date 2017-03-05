@@ -138,3 +138,5 @@ gulp.task('watch', function() {
 });
 
 gulp.task('default', ['build-dev', 'watch']);
+
+gulp.task('production', ['js', 'css'])
