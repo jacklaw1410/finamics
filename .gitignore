@@ -15,7 +15,7 @@ static
 
 # ./manage.py collectstatic folder
 static-collected/*
-
+staticfiles
 
 # Packages
 *.egg
