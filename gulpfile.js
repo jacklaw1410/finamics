@@ -31,7 +31,8 @@ var src_watch = [src_html, ['**/*.mo']].reduce((x1,x2) => x1.concat(x2))
 gulp.task('js', function() {
     return gulp.src(src_js)
         .pipe(rename(function (path) {
-            path.dirname = path.dirname.split('\\')[0] + '\\js';
+            dirname = path.dirname.replace(/\\/g,'/')
+            path.dirname = dirname.split('/')[0] + '/js';
         }))
         .pipe(gulp.dest('static'))
         .pipe(rename({suffix: '.min'}))
@@ -49,7 +50,8 @@ var postcss_processors = [
 gulp.task('css', function() {
     return gulp.src(src_css)
         .pipe(rename(function (path) {
-            path.dirname = path.dirname.split('\\')[0] + '\\css';
+            dirname = path.dirname.replace(/\\/g,'/')
+            path.dirname = dirname.split('/')[0] + '/css';
         }))
 		.pipe(postcss(postcss_processors).on('error', gutil.log))
         .pipe(gulp.dest('static'))
