@@ -25,15 +25,12 @@
     "pace": "0.0.4",
     "reductio": "^0.6.3",
     "underscore": "^1.8.3",
-    "wow": "0.0.6"
-  },
-  "devDependencies": {
+    "wow": "0.0.6",
     "autoprefixer": "^6.6.1",
     "babel-cli": "^6.18.0",
     "babel-preset-env": "^1.1.8",
     "babel-preset-es2015-without-strict": "0.0.4",
     "babel-preset-latest": "^6.16.0",
-    "browser-sync": "latest",
     "cssnano": "^3.10.0",
     "del": "latest",
     "gulp": "latest",
@@ -57,12 +54,15 @@
     "gulp-useref": "latest",
     "gulp-util": "latest",
     "gulp-watch": "latest",
-    "lazypipe": "latest",
     "nightwatch": "^0.9.12",
     "postcss-cssnext": "^2.9.0",
     "postcss-font-magician": "^1.6.0",
     "precss": "^1.4.0",
-    "require-dir": "^0.3.1",
+    "require-dir": "^0.3.1"
+  },
+  "devDependencies": {
+    "browser-sync": "latest",
+    "lazypipe": "latest",
     "run-sequence": "latest",
     "selenium-download": "^2.0.9",
     "env2": "^2.1.1"
@@ -70,7 +70,7 @@
   "scripts": {
     "start": "python env.py & setenv & python manage.py runserver 8080",
     "test": "node_modules/.bin/nightwatch",
-    "postinstall": "node nightwatch.conf.js",
+    "postinstall": "./node_modules/.bin/gulp production",
     "shell": "python env.py & setenv & python manage.py shell"
   },
   "babel": {
