@@ -9,27 +9,12 @@ environment_variables:
     ECR_ID: 257766425177
 
 phases:
-  install:
-    commands:
-      - apt-get update -y
-      - apt-get install -y maven curl wget
-      - apt-get purge nodejs npm
-      - curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
-      - apt-get install -y nodejs
-      - node --version
   pre_build:
     commands:
       - echo Logging in to Amazon ECR...
       - $(aws ecr get-login --region $AWS_DEFAULT_REGION)
-      - docker build -t $IMAGE_REPO_NAME .
-      - echo Build start...
   build:
     commands:
-      - pip install -r requirements.txt
-      - python manage.py test
-      - npm install
-      - ./node_modules/.bin/gulp build
-      - python manage.py collectstatic --noinput
       - docker build -t $IMAGE_REPO_NAME .
       - docker tag $IMAGE_REPO_NAME:$IMAGE_TAG $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG
   post_build:
