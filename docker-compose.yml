@@ -1,0 +1,23 @@
+version: '1'
+services:
+
+  nginx:
+    restart: always
+    build: ./nginx/
+    ports:
+      - "80:80"
+    volumes_from:
+      - web
+    links:
+      - web:web
+
+  web:
+    build:
+      context: ./
+    volumes:
+      - ./staticfiles:/www/static
+    ports:
+      - "5000:8080"
+    environment:
+      - DJANGO_SETTINGS_MODULE=finamics.settings.dev
+      - DJANGO_SECRET_KEY=nosecret

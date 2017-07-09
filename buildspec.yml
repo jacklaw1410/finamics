@@ -1,0 +1,28 @@
+version: 0.1
+
+environment_variables:
+  plaintext:
+    DJANGO_SETTINGS_MODULE: finamics.settings.dev
+    SECRET_KEY: nosecret
+
+phases:
+  install:
+    commands:
+      - apt-get update -y
+      - apt-get install -y maven curl wget
+      - apt-get purge nodejs npm
+      - curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+      - apt-get install -y nodejs
+      - node --version
+  pre_build:
+    commands:
+      - echo Build start...
+  build:
+    commands:
+      - pip install -r requirements.txt
+      - python manage.py test
+      - npm install
+      - python manage.py collectstatic --noinput
+  post_build:
+    commands:
+      - echo Build completed on `date`
