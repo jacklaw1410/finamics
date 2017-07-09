@@ -110,7 +110,7 @@ gulp.task('build-dev', [
 gulp.task('build', [
     'js-dist',
     'css-dist',
-    'minify-img',
+    'img',
     'font',
     'json',
     'useref'
