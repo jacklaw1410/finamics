@@ -2,10 +2,10 @@ FROM python:3.4
 
 # Install PostgreSQL dependencies
 RUN apt-get update
-RUN api-get install -y curl
+RUN api-get install curl
 RUN apt-get purge nodejs npm
 RUN curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
-RUN apt-get install -y nodejs
+RUN apt-get install nodejs
 RUN node --version
 
 # Copy your application code to the container (make sure you create a .dockerignore file if any large files or directories should be excluded)
