@@ -1,7 +1,7 @@
 FROM python:3.4
 
 # Install PostgreSQL dependencies
-RUN apt-get update -y
+RUN apt-get update
 RUN api-get install -y curl
 RUN apt-get purge nodejs npm
 RUN curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
